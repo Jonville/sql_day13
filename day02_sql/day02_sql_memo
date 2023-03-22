@@ -1,0 +1,76 @@
+2023-03-22
+
+	데이터베이스 SQL
+	
+	기본 문법!
+	
+
+SELECT 문   ---  DELETE 문도 같음	
+
+	SELECT [COLUMN],[COLUMN],[COLUMN],[COLUMN],.........
+	FROM [TABLE] 
+
+	INNER JOIN [TABLE] ON [COLUMN] = [COLUMN]
+
+
+	WHERE [조건식 ~~~]
+	;
+	
+UPDATE 문
+
+	UPDATE [TABLE]
+	SET [바꿀거]
+	WHERE [조건식 ~~~~]
+	
+
+WHERE [COLUMN] IN [		]   <= IN 은 OR랑 같다고 생각해라
+
+DISTINCT <- 중복된거 처리용 ( GROUP BY 생략하려고 많이 씀 )
+
+
+==========================================================================
+
+INNER JOIN
+
+	양쪽에 데이터가 다있을때 출력이됨
+
+LEFT JOIN     -- LEFT OUTER JOIN 이렇게도 쓰임
+
+	서로 다른 테이블에 정보가 같은게 없을 수 있다. 그래서 해결할라믄 LEFT JOIN 을 씀
+
+	주가 되는 테이블 기준으로 데이터가 있다면 매칭되는 값이 없더라도 출력이됨. 
+
+	( 매칭이 안되면 NULL 값으로 채워짐 )
+	
+	FROM 에 있는 테이블이 기준 ! 주가 됨!
+
+	FROM 에 있는 테이블 쪽에 데이터가 비어있으면 데이터가 LEFT JOIN 처럼 나온다
+
+==========================================================================
+
+INSERT INTO [TABLE] VALUES();			== 순서에 맞게 값을 입력한다.
+	데이터를 입력한다
+	
+	예 ) INSERT INTO BOOK VALUES (11, '스포츠 의학', '한솔' , 90000);	
+	
+	예 ) INSERT INTO BOOK (BOOKID, BOOKNAME,PUBLISHER) VALUES (11, '스포츠 의학', '한솔');	
+			일부분만 넣으려면 명시를 해줘야합니다.
+			
+	예 ) INSERT INTO BOOK(BOOKID, BOOKNAME, PRICE, PUBLISHER)        -- BOOK 에 IMPORTED_BOOK 를 넣는다는 의미
+        SELECT BOOKID, BOOKNAME, PRICE, PUBLISHER
+        FROM IMPORTED_BOOK;
+		
+		
+==========================================================================
+
+SELECT ABS(-78) , ABS(78)
+FROM DUAL = 임시 테이블
+
+LPAD = LPADDING 의 약자 ( 채운다는 의미 )
+
+SUBSTR =  지정된 길이만큼 자른다   <=== 자바에서 SUBSTRING
+
+보통 함수는 COLUMN 에서 이뤄진다. COLUMN 열 ! 개념이 정말 중요함.
+
+시간 함수 는 데이터 관리적으로 봤을때 항상 넣어주는게 좋다
+	TO_DATE() 
